@@ -1,4 +1,35 @@
 <resources>
     <string name="app_name">Notes</string>
-    <string name="homework">homework</string>
+    <string name="name_1">Название 1</string>
+    <string name="name_2">Название 2</string>
+    <string name="name_3">Название 3</string>
+    <string name="name_4">Название 4</string>
+    <string name="name_5">Название 5</string>
+    <string name="description_1">Описание 1</string>
+    <string name="description_2">Описание 2</string>
+    <string name="description_3">Описание 3</string>
+    <string name="description_4">Описание 4</string>
+    <string name="description_5">Описание 5</string>
+    <string name="date_1">25.05.21</string>
+    <string name="date_2">05.06.21</string>
+    <string name="date_3">10.06.21</string>
+    <string name="date_4">15.06.21</string>
+    <string name="date_5">20.06.21</string>
+    <string name="note_1">Заметка </string>
+    <string name="note_2">Заметка </string>
+    <string name="note_3">Заметка </string>
+    <string name="note_4">Заметка </string>
+    <string name="note_5">Заметка </string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_note_details">NotesDetailsActivity</string>
+    <string name="hello_world">Hello Square World!</string>
+    <string name="point_one">Пункт 1</string>
+    <string name="point_two">Пункт 2</string>
+    <string name="point_three">Пункт 3</string>
+    <string name="search">Поиск</string>
+    <string name="fragment_navigation">Боковое меню</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
 </resources>

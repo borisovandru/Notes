@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/point_one"
+        android:orderInCategory="100"
+        android:title="@string/point_one"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/point_two"
+        android:orderInCategory="100"
+        android:title="@string/point_two"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/point_three"
+        android:orderInCategory="20"
+        android:title="@string/point_three"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/search"
+        android:icon="@android:drawable/ic_menu_search"
+        android:orderInCategory="5"
+        android:title="@string/search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="ifRoom" />
+
+</menu>
