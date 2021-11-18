@@ -20,8 +20,7 @@
             android:clickable="true"
             android:scaleType="fitXY"
             app:srcCompat="@drawable/book"
-            tools:ignore="SpeakableTextPresentCheck"
-            android:focusable="true" />
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <LinearLayout
             android:layout_width="match_parent"
