@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="default_padding">30dp</dimen>
-    <dimen name="box_inset_layout_padding">0dp</dimen>
-    <dimen name="inner_frame_layout_padding">5dp</dimen>
+    <dimen name="textSize">20sp</dimen>
+    <dimen name="btn_radius">20dp</dimen>
     <dimen name="nav_header_height">200dp</dimen>
     <dimen name="nav_header_dimen">42sp</dimen>
-    <dimen name="heightImage">150dp</dimen>
-    <dimen name="textTitle">30sp</dimen>
+    <dimen name="text_description">20sp</dimen>
+    <dimen name="textTitle">24sp</dimen>
+    <dimen name="textGroup">28sp</dimen>
+    <dimen name="heightImage">90dp</dimen>
 </resources>

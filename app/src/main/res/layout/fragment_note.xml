@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teal_200"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:showIn=".MainActivity">
+
+    <EditText
+        android:id="@+id/name_edit_text"
+        style="@style/style"
+        android:autofillHints="username"
+        android:hint="@string/name_note"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/descriptions_edit_text"
+        style="@style/style"
+        android:autofillHints="text"
+        android:gravity="top|start"
+        android:hint="@string/desc"
+        android:inputType="textMultiLine"
+        android:lines="8"
+        android:scrollbars="vertical" />
+
+    <TextView
+        android:id="@+id/date"
+        style="@style/style" />
+
+    <TextView
+        android:id="@+id/author"
+        style="@style/style" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/save_changes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/save_button"
+        app:cornerRadius="@dimen/btn_radius" />
+
+</LinearLayout>

@@ -1,48 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="name">
-        <item>Название 1</item>
-        <item>Название 2</item>
-        <item>Название 3</item>
-        <item>Название 4</item>
-        <item>Название 5</item>
-        <item>Название 6</item>
-        <item>Название 7</item>
-    </string-array>
-    <string-array name="description">
-        <item>Описание 1</item>
-        <item>Описание 2</item>
-        <item>Описание 3</item>
-        <item>Описание 4</item>
-        <item>Описание 5</item>
-        <item>Описание 6</item>
-        <item>Описание 7</item>
-    </string-array>
-    <string-array name="date">
-        <item>01.01.21</item>
-        <item>02.02.21</item>
-        <item>03.03.21</item>
-        <item>04.04.21</item>
-        <item>05.05.21</item>
-        <item>06.06.21</item>
-        <item>07.07.21</item>
-    </string-array>
     <string-array name="notes">
-        <item>Заметка 1</item>
-        <item>Заметка 2</item>
-        <item>Заметка 3</item>
-        <item>Заметка 4</item>
-        <item>Заметка 5</item>
-        <item>Заметка 6</item>
-        <item>Заметка 7</item>
+        <item>Понедельник</item>
+        <item>Вторник</item>
+        <item>Среда</item>
+        <item>Четверг</item>
+        <item>Пятница</item>
+        <item>Суббота</item>
+        <item>Воскресенье</item>
     </string-array>
-    <array name="pictures">
-        <item>@drawable/picture1</item>
-        <item>@drawable/picture2</item>
-        <item>@drawable/picture3</item>
-        <item>@drawable/picture4</item>
-        <item>@drawable/picture5</item>
-        <item>@drawable/picture6</item>
-        <item>@drawable/picture7</item>
-    </array>
+    <string-array name="descriptions">
+        <item>Задание по уроку 7</item>
+        <item>Обучение по 8 уроку. Вебинар  метадичка</item>
+        <item>Задание по 8 уроку</item>
+        <item>Обучение по 9 уроку. Вебинар  метадичка</item>
+        <item>Задание по 9 уроку.</item>
+        <item>Уборка помещения. Закупки в магазине</item>
+        <item>Прогулка в парке</item>
+    </string-array>
+
 </resources>
