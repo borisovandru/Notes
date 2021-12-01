@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/nav_notes"
-        android:name="com.android.notes.ui.notes.NotesFragment"
+        android:name="com.android.notes.ui.ui.notes.NotesFragment"
         android:label="@string/menu_main"
         tools:layout="@layout/fragment_notes" />
 
     <fragment
         android:id="@+id/nav_detail"
-        android:name="com.android.notes.ui.detail.DetailFragment"
+        android:name="com.android.notes.ui.ui.detail.DetailFragment"
         android:label="@string/menu_detail"
         tools:layout="@layout/fragment_detail" />
 
