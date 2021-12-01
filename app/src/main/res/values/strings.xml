@@ -6,7 +6,9 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-
     <string name="menu_main">Заметки</string>
     <string name="menu_detail">Подробнее</string>
+    <string name="note_text_example">Текст заметки</string>
+    <string name="title_text_example">Заголовок заметки</string>
+    <string name="date_text_example">20.03.2021</string>
 </resources>
