@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="textSize">20sp</dimen>
-    <dimen name="btn_radius">20dp</dimen>
-    <dimen name="nav_header_height">200dp</dimen>
-    <dimen name="nav_header_dimen">42sp</dimen>
-    <dimen name="text_description">20sp</dimen>
-    <dimen name="textTitle">24sp</dimen>
-    <dimen name="textGroup">28sp</dimen>
-    <dimen name="heightImage">90dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
 </resources>
