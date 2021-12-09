@@ -1,35 +1,52 @@
-package com.android.notes.ui.servicess;
+package com.android.notes.servicess;
 
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
-public class DataHelper implements IDataHelper {
-    private static com.android.notes.ui.model.Notes myNotesExample;
+import com.android.notes.model.Note;
+import com.android.notes.model.NotesRepository;
+import com.android.notes.utils.NotesLogger;
 
-    public DataHelper() {
-        if (myNotesExample == null) {
-            myNotesExample = loadExample(50);
+public class NoteService implements INoteService {
+    public static final NoteService INSTANCE = new NoteService();
+    private NotesRepository notes;
+
+    public NoteService() {
+        NotesLogger.printLog("public NoteService()");
+        if (notes == null) {
+            notes = getNotesExample(50);
         }
     }
 
     @Override
-    public com.android.notes.ui.model.Notes load() {
+    public NotesRepository getNotes() {
         //TODO реализовать загрузку заметок откуда-либо
-        return myNotesExample;
+        NotesLogger.printLog("public NotesRepository getNotes()");
+        Collections.sort(notes.getNotes(), new Comparator<Note>() {
+            @Override
+            public int compare(Note o1, Note o2) {
+                Long d1 = o1.getDateCreated();
+                Long d2 = o2.getDateCreated();
+                return d2.compareTo(d1);
+            }
+        });
+        return notes;
     }
 
     @Override
-    public com.android.notes.ui.model.Notes loadExample(int count) {
+    public NotesRepository getNotesExample(int count) {
         //TODO реализовать генерацию заметок для тестов
-        com.android.notes.ui.model.Notes result = new com.android.notes.ui.model.Notes();
+        NotesRepository result = new NotesRepository();
         Random rnd = new Random();
         Calendar cal;
         List<String> colors = Arrays.asList("#f44336", "#e91e63", "#2196f3", "#66bb6a", "#6a1b9a",
                 "#3f51b5", "#9fa8da", "#cddc39", "#ffeb3b", "#76ff03", "#6d4c41");
         List<String> noteExamples = Arrays.asList(
-                "Предварительные выводы неутешительны: современная методология разработки позволяет оценить значение поставленных обществом задач. Прежде всего, современная методология разработки представляет собой интересный эксперимент проверки форм воздействия. Лишь стремящиеся вытеснить традиционное производство, нанотехнологии неоднозначны и будут разоблачены.",
+                "Предварительные выводы неутешительны: современная методология разработки позволяет оценить значение поставленных обществом задач. Прежде всего, современная методология разработки представляет собой интересный эксперимент проверки форм воздействия. Лишь стремящиеся вытеснить традиционное производство, нанотехнологии неоднозначны и будут разоблачены.Предварительные выводы неутешительны: современная методология разработки позволяет оценить значение поставленных обществом задач. Прежде всего, современная методология разработки представляет собой интересный эксперимент проверки форм воздействия. Лишь стремящиеся вытеснить традиционное производство, нанотехнологии неоднозначны и будут разоблачены.",
                 "Имеется спорная точка зрения, гласящая примерно следующее: активно развивающиеся страны третьего мира являются только методом политического участия и описаны максимально подробно. Предварительные выводы неутешительны: глубокий уровень погружения обеспечивает актуальность экспериментов, поражающих по своей масштабности и грандиозности. Являясь всего лишь частью общей картины, явные признаки победы институционализации лишь добавляют фракционных разногласий и объективно рассмотрены соответствующими инстанциями.",
                 "Имеется спорная точка зрения, гласящая примерно следующее: предприниматели в сети интернет лишь добавляют фракционных разногласий и подвергнуты целой серии независимых исследований. С учётом сложившейся международной обстановки, консультация с широким активом требует определения и уточнения форм воздействия. Лишь предприниматели в сети интернет представляют собой не что иное, как квинтэссенцию победы маркетинга над разумом и должны быть заблокированы в рамках своих собственных рациональных ограничений!",
                 "Учитывая ключевые сценарии поведения, базовый вектор развития является качественно новой ступенью кластеризации усилий. Мы вынуждены отталкиваться от того, что постоянное информационно-пропагандистское обеспечение нашей деятельности не оставляет шанса для экономической целесообразности принимаемых решений. В рамках спецификации современных стандартов, диаграммы связей, инициированные исключительно синтетически, преданы социально-демократической анафеме.",
@@ -39,34 +56,35 @@ public class DataHelper implements IDataHelper {
                 "С другой стороны начало повседневной работы по формированию позиции напрямую зависит от всесторонне сбалансированных нововведений. Разнообразный и богатый опыт курс на социально-ориентированный национальный проект обеспечивает актуальность дальнейших направлений развитая системы массового участия. Таким образом, выбранный нами инновационный путь играет важную роль в формировании новых предложений. С другой стороны курс на...",
                 "Соображения высшего порядка, а также начало повседневной работы по формированию позиции требует определения и уточнения форм воздействия. Практический опыт показывает, что дальнейшее развитие различных форм деятельности позволяет оценить значение системы масштабного изменения ряда параметров. С другой стороны новая модель организационной деятельности играет важную роль в формировании существующих финансовых и административных...",
                 "Равным образом реализация намеченного плана развития играет важную роль в формировании форм воздействия. Таким образом, повышение уровня гражданского сознания позволяет выполнить важнейшие задания по разработке системы обучения кадров, соответствующей насущным потребностям. Не следует, однако, забывать о том, что начало повседневной работы по формированию позиции требует определения и уточнения системы обучения...");
-
         for (int i = 0; i < count; i++) {
             cal = Calendar.getInstance();
             cal.add(Calendar.DATE, (-(rnd.nextInt(150))));
-            result.add(new com.android.notes.ui.model.Note(
+            result.add(new Note(
                     "Заметка №" + i,
                     noteExamples.get(rnd.nextInt(10)),
                     cal.getTimeInMillis(),
                     colors.get(rnd.nextInt(9))
             ));
         }
-
-        result.getNotes().sort(new java.util.Comparator<com.android.notes.ui.model.Note>() {
-            @Override
-            public int compare(com.android.notes.ui.model.Note o1, com.android.notes.ui.model.Note o2) {
-                Long d1 = o1.getDateCreated();
-                Long d2 = o2.getDateCreated();
-                return d2.compareTo(d1);
-            }
-        });
-
         return result;
     }
 
     //Пока изменение только даты
     @Override
-    public void saveDate(com.android.notes.ui.model.Note note, long dateNew) {
+    public void updateDateNote(Note note, long dateNew) {
         //TODO реализовать сохранение заметок куда-либо
-        myNotesExample.findByID(note.getId()).setDateCreated(dateNew);
+        notes.findByID(note.getId()).setDateCreated(dateNew);
+    }
+
+    @Override
+    public void updateNote(int itemID, Note note) {
+        notes.findByID(itemID).setTitle(note.getTitle());
+        notes.findByID(itemID).setNote(note.getNote());
+        notes.findByID(itemID).setDateCreated(note.getDateCreated());
+    }
+
+    @Override
+    public void deleteNote(Note note) {
+        notes.remove(note);
     }
 }

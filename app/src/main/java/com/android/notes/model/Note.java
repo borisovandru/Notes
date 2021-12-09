@@ -1,4 +1,4 @@
-package com.android.notes.ui.model;
+package com.android.notes.model;
 
 import java.io.Serializable;
 
@@ -14,6 +14,9 @@ public class Note implements Serializable {
         this.note = note;
         this.dateCreated = dateCreated;
         this.color = color;
+    }
+
+    public Note() {
     }
 
     public String getTitle() {

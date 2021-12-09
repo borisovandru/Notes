@@ -1,4 +1,4 @@
-package com.android.notes.ui.ui.notes;
+package com.android.notes.ui.notes;
 
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -10,30 +10,45 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.android.notes.R;
-
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
+import com.android.notes.R;
+import com.android.notes.model.Note;
+import com.android.notes.model.NotesRepository;
 
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> {
-    private final java.util.List<com.android.notes.ui.model.Note> notes;
+    private List<Note> notes = new ArrayList<>();
     private INotesClickable iNotesClickable;
+    private INotesLongClickable iNotesLongClickable;
 
-    NotesAdapter(com.android.notes.ui.model.Notes notesList, INotesClickable iNotesClickable) {
-        this.notes = notesList.getNotes();
+    NotesAdapter(INotesClickable iNotesClickable, INotesLongClickable iNotesLongClickable) {
+
         this.iNotesClickable = iNotesClickable;
+        this.iNotesLongClickable = iNotesLongClickable;
+
+    }
+
+    public void addItems(NotesRepository notesRepositoryList) {
+        notes.addAll(notesRepositoryList.getNotes());
+    }
+
+    public void clear() {
+        notes.clear();
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
-        return new ViewHolder(view, iNotesClickable);
+        return new ViewHolder(view, iNotesClickable, iNotesLongClickable);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        com.android.notes.ui.model.Note note = notes.get(position);
+        Note note = notes.get(position);
         holder.myTextView.setText(note.getTitle());
         holder.note.setText(note.getNote());
         holder.dateCreated.setText(new SimpleDateFormat("dd.MM.yyyy")
@@ -47,13 +62,13 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
         return notes.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         TextView myTextView;
-        private final TextView note;
-        private final TextView dateCreated;
-        private final LinearLayoutCompat rect;
+        private TextView note;
+        private TextView dateCreated;
+        private LinearLayoutCompat rect;
 
-        ViewHolder(View itemView, INotesClickable iNotesClickable) {
+        ViewHolder(View itemView, INotesClickable iNotesClickable, INotesLongClickable iNotesLongClickable) {
             super(itemView);
             myTextView = itemView.findViewById(R.id.title);
             note = itemView.findViewById(R.id.noteText);
@@ -61,12 +76,20 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
             rect = itemView.findViewById(R.id.rect);
 
             NotesAdapter.this.iNotesClickable = iNotesClickable;
+            NotesAdapter.this.iNotesLongClickable = iNotesLongClickable;
             itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
             iNotesClickable.onNoteClick(getAdapterPosition());
+        }
+
+        @Override
+        public boolean onLongClick(View v) {
+            iNotesLongClickable.onNoteLongClick(getAdapterPosition());
+            return true;
         }
     }
 }
