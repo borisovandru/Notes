@@ -2,6 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/detailCard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/margin_def"
@@ -13,7 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.ui.detail.DetailFragment">
+        tools:context=".ui.detail.DetailFragment">
 
         <TextView
             android:id="@+id/titleTV"
@@ -73,19 +74,8 @@
             android:textAlignment="textStart"
             android:textColor="@color/white"
             android:textSize="@dimen/text_date_size"
-            app:layout_constraintBottom_toTopOf="@id/saveBtn"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="@tools:sample/date/ddmmyy" />
-
-        <Button
-            android:id="@+id/saveBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin_def"
-            android:text="CHANGE DATE (NOT WORKING)"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </com.google.android.material.card.MaterialCardView>

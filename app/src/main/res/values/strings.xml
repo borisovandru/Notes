@@ -2,8 +2,8 @@
     <string name="app_name">MyNotes</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">Мои заметки</string>
+    <string name="nav_header_user_name">Имя пользователя</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="menu_main">Заметки</string>
@@ -11,4 +11,12 @@
     <string name="note_text_example">Текст заметки</string>
     <string name="title_text_example">Заголовок заметки</string>
     <string name="date_text_example">20.03.2021</string>
+    <string name="menu_setting">Настройки</string>
+    <string name="menu_about">О программе</string>
+    <string name="nav_header_user_mail">username@gmail.com</string>
+    <string name="menu_edit">Редактирование</string>
+    <string name="title_hint">Название заметки</string>
+    <string name="note_hint">Текст заметки</string>
+    <string name="date_hint">Дата создания</string>
+    <string name="btn_save_text">SAVE</string>
 </resources>

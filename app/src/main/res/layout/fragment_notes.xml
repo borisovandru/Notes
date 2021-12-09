@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ui.notes.NotesFragment">
+    tools:context=".ui.notes.NotesFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewNotes"
@@ -17,5 +17,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:spanCount="@dimen/count_column"
         tools:listitem="@layout/item" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

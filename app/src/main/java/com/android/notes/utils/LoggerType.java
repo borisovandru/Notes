@@ -1,4 +1,4 @@
-package com.android.notes.ui.utils;
+package com.android.notes.utils;
 
 public enum LoggerType {
     ERROR,
