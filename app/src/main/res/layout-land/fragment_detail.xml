@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/detailCard"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/margin_def"
+    android:backgroundTint="@color/light_gray"
+    app:cardCornerRadius="@dimen/card_corner_radius"
+    app:cardElevation="@dimen/card_elevation"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    app:strokeColor="@color/dark_gray">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.detail.DetailFragment">
+
+        <TextView
+            android:id="@+id/titleTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_def"
+            android:layout_marginTop="@dimen/margin_def"
+            android:layout_marginEnd="@dimen/margin_end"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_title_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@tools:sample/lorem/random" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/rect"
+            android:layout_width="@dimen/rect_size"
+            android:layout_height="@dimen/rect_size"
+            android:background="@color/orange"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/zero"
+            android:layout_marginVertical="@dimen/margin_vertical"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toTopOf="@id/dateCreatedTV"
+            app:layout_constraintTop_toBottomOf="@id/titleTV">
+
+            <TextView
+                android:id="@+id/noteTV"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/zero"
+                android:layout_marginStart="@dimen/margin_def"
+                android:layout_marginTop="@dimen/note_margin_top"
+                android:layout_marginEnd="@dimen/margin_def"
+                android:layout_marginBottom="@dimen/note_margin_bottom"
+                android:ellipsize="end"
+                android:textAlignment="textStart"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_default_size"
+                tools:text="@tools:sample/lorem/random" />
+        </androidx.core.widget.NestedScrollView>
+
+        <TextView
+            android:id="@+id/dateCreatedTV"
+            android:layout_width="@dimen/zero"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_def"
+            android:layout_marginEnd="@dimen/margin_def"
+            android:layout_marginBottom="@dimen/note_margin_bottom"
+            android:textAlignment="textStart"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_date_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="@tools:sample/date/ddmmyy" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

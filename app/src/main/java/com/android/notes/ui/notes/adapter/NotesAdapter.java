@@ -1,6 +1,5 @@
-package com.android.notes.ui.notes;
+package com.android.notes.ui.notes.adapter;
 
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,27 +15,28 @@ import java.util.Date;
 import java.util.List;
 
 import com.android.notes.R;
-import com.android.notes.model.Note;
-import com.android.notes.model.NotesRepository;
+import com.android.notes.domain.Note;
 
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> {
     private List<Note> notes = new ArrayList<>();
     private INotesClickable iNotesClickable;
     private INotesLongClickable iNotesLongClickable;
 
-    NotesAdapter(INotesClickable iNotesClickable, INotesLongClickable iNotesLongClickable) {
-
+    public NotesAdapter(INotesClickable iNotesClickable, INotesLongClickable iNotesLongClickable) {
         this.iNotesClickable = iNotesClickable;
         this.iNotesLongClickable = iNotesLongClickable;
-
     }
 
-    public void addItems(NotesRepository notesRepositoryList) {
-        notes.addAll(notesRepositoryList.getNotes());
+    public void addItems(List<Note> notesRepositoryList) {
+        notes.addAll(notesRepositoryList);
     }
 
     public void clear() {
         notes.clear();
+    }
+
+    public List<Note> getData() {
+        return notes;
     }
 
     @NonNull
@@ -53,8 +53,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
         holder.note.setText(note.getNote());
         holder.dateCreated.setText(new SimpleDateFormat("dd.MM.yyyy")
                 .format(new Date(note.getDateCreated())));
-
-        holder.rect.setBackgroundColor(Color.parseColor(note.getColor()));
+        holder.rect.setBackgroundColor(note.getColor());
     }
 
     @Override

@@ -14,6 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
+            app:navigationIcon="@drawable/ic_back_arrow"
             app:popupTheme="@style/Theme.MyNotes.PopupOverlay"
             app:title="@string/menu_edit_title" />
 
@@ -56,8 +57,8 @@
                 android:backgroundTint="@color/white"
                 android:gravity="top"
                 android:hint="@string/note_hint"
-                android:maxLines="@dimen/count_lines_note"
-                android:minLines="@dimen/count_lines_note" />
+                android:maxLines="@dimen/count_lines_note_land"
+                android:minLines="@dimen/count_lines_note_land" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout

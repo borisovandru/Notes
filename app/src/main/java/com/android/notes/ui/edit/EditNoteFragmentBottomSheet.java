@@ -10,12 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -33,83 +35,28 @@ import com.android.notes.ui.notes.Publisher;
 import com.android.notes.ui.notes.PublisherGetter;
 import top.defaults.colorpicker.ColorPickerPopup;
 
-public class EditNoteFragment extends Fragment implements INoteObserver {
+public class EditNoteFragmentBottomSheet extends BottomSheetDialogFragment implements INoteObserver {
+    public static final String TAG = "EditNoteFragmentBottomSheet";
     private TextInputEditText dateInput;
-    private final String CURRENT_NOTE = "CURRENT_NOTE";
     public final FirestoreNotesRepository firestoreNotesRepository = FirestoreNotesRepository.INSTANCE;
     private TextInputEditText titleInput;
     private TextInputEditText noteInput;
-    private NavController navController;
     private MaterialButton btnSave;
     private Publisher publisher;
     private LinearLayoutCompat colorSelector;
+    private Toolbar toolbar;
 
-    public EditNoteFragment() {
+    public static EditNoteFragmentBottomSheet newInstance() {
+        return new EditNoteFragmentBottomSheet();
     }
 
     public void onAttach(Context context) {
         super.onAttach(context);
-        publisher = ((PublisherGetter) context).getPublisher(); // получим обработчика подписок
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_edit_note, container, false);
-        init(root);
-
-        if (getArguments() != null) {
-            Note note = (Note) getArguments().getSerializable(CURRENT_NOTE);
-            if (note != null) {
-                titleInput.setText(note.getTitle());
-                noteInput.setText(note.getNote());
-                dateInput.setText(new SimpleDateFormat("dd.MM.yyyy").format(new Date(note.getDateCreated())));
-                colorSelector.setBackgroundColor(note.getColor());
-            } else {
-            }
-
-            btnSave.setOnClickListener(v -> {
-                String titleSave = titleInput.getText().toString();
-                String noteSave = noteInput.getText().toString();
-                int color = ((ColorDrawable) colorSelector.getBackground()).getColor();
-                long dateSave = 0;
-                Date date = null;
-                try {
-                    date = new SimpleDateFormat("dd.MM.yyyy").parse(dateInput.getText().toString());
-                    dateSave = date.getTime();
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                Note saveNote = new Note(titleSave, noteSave, dateSave, color);
-                if (note != null) {
-                    firestoreNotesRepository.updateNote(note, saveNote, new Callback<Boolean>() {
-                        @Override
-                        public void onResult(Boolean value) {
-                            publisher.startUpdate();
-                            navController.navigateUp();
-                        }
-                    });
-                } else {
-                    firestoreNotesRepository.addNote(saveNote, new Callback<Boolean>() {
-                        @Override
-                        public void onResult(Boolean value) {
-                            publisher.startUpdate();
-                            navController.navigateUp();
-                        }
-                    });
-                }
-            });
-        }
-        return root;
+        publisher = ((PublisherGetter) context).getPublisher();
     }
 
     private void init(View view) {
-        navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment);
+        toolbar = view.findViewById(R.id.toolbar);
         titleInput = view.findViewById(R.id.titleInput);
         noteInput = view.findViewById(R.id.noteInput);
         btnSave = view.findViewById(R.id.btnSave);
@@ -136,12 +83,75 @@ public class EditNoteFragment extends Fragment implements INoteObserver {
         dateInput.setOnClickListener(v -> {
             callDatePicker();
         });
+    }
 
-        Toolbar toolbar = view.findViewById(R.id.toolbar);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.fragment_edit_bottom_sheet, container, false);
+        init(root);
+
+        if (getArguments() != null) {
+            String CURRENT_NOTE = "CURRENT_NOTE";
+            Note note = (Note) getArguments().getSerializable(CURRENT_NOTE);
+            if (note != null) {
+                toolbar.setTitle(R.string.edit_mode_title);
+                titleInput.setText(note.getTitle());
+                noteInput.setText(note.getNote());
+                dateInput.setText(new SimpleDateFormat("dd.MM.yyyy").format(new Date(note.getDateCreated())));
+                colorSelector.setBackgroundColor(note.getColor());
+            } else {
+                toolbar.setTitle(R.string.add_mode_title);
+            }
+
+            btnSave.setOnClickListener(v -> {
+                String titleSave = titleInput.getText().toString();
+                String noteSave = noteInput.getText().toString();
+                int color = ((ColorDrawable) colorSelector.getBackground()).getColor();
+                long dateSave = 0;
+                Date date = null;
+                try {
+                    date = new SimpleDateFormat("dd.MM.yyyy").parse(dateInput.getText().toString());
+                    dateSave = date.getTime();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Note saveNote = new Note(titleSave, noteSave, dateSave, color);
+                if (note != null) {
+                    firestoreNotesRepository.updateNote(note, saveNote, new Callback<Boolean>() {
+                        @Override
+                        public void onResult(Boolean value) {
+                            publisher.startUpdate();
+                            dismiss();
+                        }
+                    });
+                } else {
+                    firestoreNotesRepository.addNote(saveNote, new Callback<Boolean>() {
+                        @Override
+                        public void onResult(Boolean value) {
+                            publisher.startUpdate();
+                            dismiss();
+                        }
+                    });
+                }
+            });
+        }
+        return root;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        ((BottomSheetDialog) getDialog()).getBehavior().addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
-            public void onClick(View view) {
-                getActivity().onBackPressed();
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+
+            }
+
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+
             }
         });
     }
