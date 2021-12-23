@@ -15,7 +15,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/Theme.MyNotes.PopupOverlay"
-            app:title="@string/menu_edit_title" />
+            app:title="@string/menu_edit_title_bottom" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -56,8 +56,8 @@
                 android:backgroundTint="@color/white"
                 android:gravity="top"
                 android:hint="@string/note_hint"
-                android:maxLines="@dimen/count_lines_note"
-                android:minLines="@dimen/count_lines_note" />
+                android:maxLines="@dimen/count_lines_note_bottom"
+                android:minLines="@dimen/count_lines_note_bottom" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -113,7 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_def"
             android:text="@string/btn_save_text"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/colorSelector" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

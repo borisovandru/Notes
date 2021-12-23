@@ -13,4 +13,5 @@
     <color name="orange">#FF6D00</color>
     <color name="blue">#0091EA</color>
     <color name="light_blue">#00B8D4</color>
+    <color name="super_light_gray">#CCCCCC</color>
 </resources>

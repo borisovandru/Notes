@@ -4,29 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav__item_notes">
+
     <fragment
         android:id="@+id/nav__item_notes"
         android:name="com.android.notes.ui.notes.NotesFragment"
         android:label="@string/menu_main"
         tools:layout="@layout/fragment_notes" />
+
     <fragment
         android:id="@+id/nav_detail"
         android:name="com.android.notes.ui.detail.DetailFragment"
         android:label="@string/menu_detail"
         tools:layout="@layout/fragment_detail" />
+
     <fragment
         android:id="@+id/nav_item_about"
         android:name="com.android.notes.ui.about.AboutFragment"
         android:label="@string/menu_about"
         tools:layout="@layout/fragment_about" />
+
     <fragment
         android:id="@+id/nav__item_settings"
         android:name="com.android.notes.ui.settings.SettingsFragment"
         android:label="@string/menu_setting"
         tools:layout="@layout/fragment_settings" />
+
     <fragment
         android:id="@+id/nav__item_edit"
         android:name="com.android.notes.ui.edit.EditNoteFragment"
         android:label="@string/menu_edit"
         tools:layout="@layout/fragment_edit_note" />
+
+    <fragment
+        android:id="@+id/nav__item_profile"
+        android:name="com.android.notes.ui.profile.ProfileFragment"
+        android:label="@string/menu_profile"
+        tools:layout="@layout/fragment_profile" />
+
 </navigation>

@@ -9,8 +9,8 @@
     android:focusable="true"
     android:maxHeight="@dimen/card_height"
     android:minHeight="@dimen/card_height"
-    android:outlineAmbientShadowColor="@color/orange"
-    android:outlineSpotShadowColor="@color/orange"
+    android:outlineAmbientShadowColor="@color/dark_gray"
+    android:outlineSpotShadowColor="@color/dark_gray"
     app:cardCornerRadius="@dimen/zero"
     app:cardElevation="@dimen/card_elevation"
     app:rippleColor="@color/light_blue">

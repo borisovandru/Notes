@@ -1,9 +1,12 @@
 package com.android.notes.ui.notes;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Publisher {
+
     private List<INoteObserver> observers;
 
     public Publisher() {
@@ -25,4 +28,5 @@ public class Publisher {
             observer.updateAllNotes();
         }
     }
+
 }

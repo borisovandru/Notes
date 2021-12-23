@@ -4,23 +4,32 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.android.notes.model.NotesRepository;
-import com.android.notes.servicess.NoteService;
+import java.util.List;
+
+import com.android.notes.domain.Callback;
+import com.android.notes.domain.INotesRepository;
+import com.android.notes.domain.Note;
 
 public class NotesViewModel extends ViewModel {
 
-    public final NoteService noteService = NoteService.INSTANCE;
+    private final MutableLiveData<List<Note>> notesLiveData = new MutableLiveData<>();
 
-    private final MutableLiveData<NotesRepository> notesLiveData = new MutableLiveData<>();
+    public final INotesRepository repository;
 
-    public NotesViewModel() {
+    public NotesViewModel(INotesRepository repository) {
+        this.repository = repository;
     }
 
     public void fetchNotes() {
-        notesLiveData.setValue(noteService.getNotes());
+        repository.getNotes(new Callback<List<Note>>() {
+            @Override
+            public void onResult(List<Note> value) {
+                notesLiveData.setValue(value);
+            }
+        });
     }
 
-    public LiveData<NotesRepository> getNotesLiveData() {
+    public LiveData<List<Note>> getNotesLiveData() {
         return notesLiveData;
     }
 }

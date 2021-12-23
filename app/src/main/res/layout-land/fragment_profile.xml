@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.MyNotes.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:navigationIcon="@drawable/ic_menu"
+            app:popupTheme="@style/Theme.MyNotes.PopupOverlay"
+            app:title="@string/menu_profile" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".ui.profile.ProfileFragment">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/profile_imageAvatar"
+            android:layout_width="@dimen/avatar_size"
+            android:layout_height="@dimen/avatar_size"
+            android:layout_margin="@dimen/avatar_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/profile_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/profile_user_name_margin_start"
+            android:layout_marginTop="@dimen/profile_user_name_margin_top"
+            android:fontFamily="@font/roboto_mono"
+            android:text="@string/nav_header_user_name"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_info_text_size"
+            app:layout_constraintStart_toEndOf="@id/profile_imageAvatar"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/profile_user_mail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/profile_user_mail_margin_start"
+            android:layout_marginTop="@dimen/profile_user_mail_margin_top"
+            android:fontFamily="@font/roboto_mono"
+            android:text="@string/nav_header_user_mail"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_info_text_size"
+            app:layout_constraintStart_toEndOf="@id/profile_imageAvatar"
+            app:layout_constraintTop_toBottomOf="@id/profile_user_name" />
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/signBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/btn_height"
+            android:layout_marginTop="@dimen/btn_margin_top"
+            android:soundEffectsEnabled="true"
+            app:layout_constraintEnd_toStartOf="@id/signVKBtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile_imageAvatar" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signVKBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/btn_height"
+            android:layout_marginTop="@dimen/btn_margin_top"
+            android:backgroundTint="@color/white"
+            android:text="VK"
+            android:textColor="@color/gray"
+            android:visibility="visible"
+            app:layout_constraintEnd_toStartOf="@id/signOutBtn"
+            app:layout_constraintStart_toEndOf="@id/signBtn"
+            app:layout_constraintTop_toBottomOf="@id/profile_imageAvatar" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/signOutBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/btn_height"
+            android:layout_marginTop="@dimen/btn_margin_top"
+            android:backgroundTint="@color/white"
+            android:text="Выход"
+            android:textColor="@color/gray"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/signVKBtn"
+            app:layout_constraintTop_toBottomOf="@id/profile_imageAvatar" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
